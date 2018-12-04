@@ -8,7 +8,8 @@
     
     
     <StackLayout>
-        <ListView x:Name="list" ItemsSource="{Binding MemoList}" HasUnevenRows="true" SeparatorVisibility="None">
+        <ListView x:Name="list" ItemsSource="{Binding MemoList}" HasUnevenRows="true" 
+                  SeparatorVisibility="None" SelectedItem="{Binding SelectedMemo}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

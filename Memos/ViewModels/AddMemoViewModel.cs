@@ -15,12 +15,17 @@ namespace Memos.ViewModels
         public event EventHandler<Memo> MemoAdded;
         public ICommand SaveMemoCommand { get; set; }
 
-        public AddMemoViewModel(IPageService pageService)
+        public AddMemoViewModel(IPageService pageService, Memo memo)
         {
             _pageService = pageService;
 
+            TitleEntry = memo.Title;
+            ContentEditor = memo.Content;
+
             SaveMemoCommand = new Command(() => SaveMemo());
         }
+
+        
 
         public async void SaveMemo()
         {
