@@ -8,13 +8,20 @@
     
     
     <StackLayout>
-        <ListView ItemsSource="{Binding MemoList}" HasUnevenRows="true" SeparatorVisibility="None">
+        <ListView x:Name="list" ItemsSource="{Binding MemoList}" HasUnevenRows="true" SeparatorVisibility="None">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <Frame Margin="30" CornerRadius="5">
                             <Label Text="{Binding Title}"/>
                         </Frame>
+                        <ViewCell.ContextActions>
+                            <MenuItem
+                                Text="Delete"
+                                IsDestructive="true"
+                                Command="{Binding Path=BindingContext.DeleteMemoCommand, Source={x:Reference list}"
+                                CommandParameter="{Binding .}"/>
+                        </ViewCell.ContextActions>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

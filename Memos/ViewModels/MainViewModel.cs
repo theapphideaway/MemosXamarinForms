@@ -14,6 +14,7 @@ namespace Memos.ViewModels
         private ObservableCollection<Memo> _memoList;
 
         public ICommand AddMemoCommand { get; set; }
+        public ICommand DeleteMemoCommand { get; set; }
 
         public MainViewModel(IPageService pageService)
         {
@@ -22,6 +23,7 @@ namespace Memos.ViewModels
             MemoList = new ObservableCollection<Memo>();
 
             AddMemoCommand = new Command( () =>AddMemo());
+            DeleteMemoCommand = new Command<Memo>(DeleteMemo);
         }
 
         public async void AddMemo()
@@ -43,6 +45,11 @@ namespace Memos.ViewModels
                 Title = memo.Title,
                 Content = memo.Content
             });
+        }
+
+        public void DeleteMemo(Memo memo)
+        {
+            MemoList.Remove(memo);
         }
 
         public ObservableCollection<Memo> MemoList
