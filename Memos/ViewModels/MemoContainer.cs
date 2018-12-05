@@ -1,27 +1,21 @@
 ﻿using System;
-using Memos.ViewModels;
-using SQLite;
+using Memos.Models;
 
-namespace Memos.Models
+namespace Memos.ViewModels
 {
-    public class Memo: BaseViewModel
+    public class MemoContainer: BaseViewModel
     {
-        private int _id;
         private string _title;
         private string _content;
 
-        [PrimaryKey, AutoIncrement]
-        public int Id 
+        public MemoContainer() { }
+
+        public MemoContainer(Memo memo)
         {
-            get => _id;
-            set
-            {
-                _id = value;
-                OnPropertyChanged();
-            }
+
         }
 
-        public string Title 
+        public string Title
         {
             get => _title;
             set
@@ -30,6 +24,7 @@ namespace Memos.Models
                 OnPropertyChanged();
             }
         }
+
         public string Content
         {
             get => _content;
